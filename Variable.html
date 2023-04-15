@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="Totarial.css">
+</head>
+<body>
+    <header>
+        <a href="JavaIntro.html" style="margin-right: 15px;">Computer Programming</a>
+        <a href="Variable.html">Variables and Operators</a>
+        <a href="Action.html"> Input and Output</a>
+        <a href="Methods.html">Methods and Testing</a>
+        
+    </header>
+    <div>
+        <p>
+           <h2> Chapter 2
+Variables and Operators</h2>
+This chapter describes how to write statements using variables, which store
+values like numbers and words, and operators, which are symbols that perform
+a computation. We also explain three kinds of programming errors and offer
+additional debugging advice.
+To run the examples in this chapter, you will need to create a new Java class
+with a main method (see Section 1.3). Throughout the book, we often omit
+class and method definitions to keep the examples concise.<br><br>
+<h3> Declaring Variables</h3>
+One of the most powerful features of a programming language is the ability to
+define and manipulate variables. A variable is a named location in memory
+that stores a value. Values may be numbers, text, images, sounds, and other
+types of data. To store a value, you first have to declare a variable:
+String message;
+This statement is called a declaration, because it declares that the variable
+message has the type String. Each variable has a type that determines what
+kind of values it can store. For example, the int type can store integers like
+1 and -5, and the char type can store characters like 'A' and 'z'.
+18 Chapter 2 Variables and Operators
+Some types begin with a capital letter and some with lowercase. You will learn
+the significance of this distinction later, but for now you should take care to
+get it right. There is no such type as Int or string.
+To declare an integer variable named x, you simply type this:
+int x;
+Note that x is an arbitrary name for the variable. In general, you should use
+names that indicate what the variables mean:
+String firstName;
+String lastName;
+int hour, minute;
+This example declares two variables with type String and two with type int.
+The last line shows how to declare multiple variables with the same type: hour
+and minute are both integers. Note that each declaration statement ends with
+a semicolon (;).<br>
+Variable names usually begin with a lowercase letter, in contrast to class names
+(like Hello) that start with a capital letter. When a variable name con-
+tains more than one word (like firstName), it is conventional to capitalize
+the first letter of each subsequent word. Variable names are case-sensitive, so
+firstName is not the same as firstname or FirstName.
+You can use any name you want for a variable. But there are about 50 reserved
+words, called keywords, that you are not allowed to use as variable names.
+These words include public, class, static, void, and int, which are used
+by the compiler to analyze the structure of the program.
+You can see the full list of keywords (https://thinkjava.org/keywords),
+but you don’t have to memorize them. Most programming editors provide
+“syntax highlighting”, which makes different parts of the program appear in
+different colors. And the compiler will complain even if one does sneak past
+you and your editor.<br><br>
+<h3>Assigning Variables</h3>
+Now that we have declared some variables, we can use them to store values.
+We do that with an assignment statement:
+2.3 Memory Diagrams 19
+message = "Hello!"; // give message the value "Hello!"
+hour = 11; // assign the value 11 to hour
+minute = 59; // set minute to 59
+This example shows three assignments, and the comments illustrate different
+ways people sometimes talk about assignment statements. The vocabulary
+can be confusing here, but the idea is straightforward:
+ When you declare a variable, you create a named storage location.
+ When you make an assignment to a variable, you update its value.
+As a general rule, a variable has to have the same type as the value you
+assign to it. For example, you cannot store a string in minute or an integer in
+message. We will show some examples that seem to break this rule, but we’ll
+get to that later.<br>
+A common source of confusion is that some strings look like integers, but they
+are not. For example, message can contain the string "123", which is made
+up of the characters '1', '2', and '3'. But that is not the same thing as the
+integer 123:
+message = "123"; // legal
+message = 123; // not legal
+Variables must be initialized (assigned for the first time) before they can
+be used. You can declare a variable and then assign a value later, as in the
+previous example. You can also declare and initialize on the same line:
+String message = "Hello!";
+int hour = 11;
+int minute = 59;
+
+        </p>
+    </div>
+    
+</body>
+</html>

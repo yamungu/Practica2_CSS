@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="Totarial.css">
+</head>
+<body>
+    <header>
+        <a href="JavaIntro.html" style="margin-right: 15px;">Computer Programming</a>
+        <a href="Variable.html">Variables and Operators</a>
+        <a href="Action.html"> Input and Output</a>
+        <a href="Methods.html">Methods and Testing</a>
+        
+    </header>
+    <div>
+        <p>
+            <h2>Chapter 3
+            Input and Output</h2><br><br>
+            The programs you’ve looked at so far simply display messages, which doesn’t
+            really involve that much computation. This chapter shows you how to read
+            input from the keyboard, use that input to calculate a result, and then format
+            that result for output.<br>
+            3.1 The System Class
+            We have been using System.out.println for a while, but you might not
+            have thought about what it means. System is a class that provides methods
+            related to the “system”, or environment, where programs run. It also pro-
+            vides System.out, which is a special value that has additional methods (like
+            println) for displaying output.
+            In fact, we can use System.out.println to display the value of System.out:
+            System.out.println(System.out);
+            The result is shown here:
+            java.io.PrintStream@685d72cd
+            This output indicates that System.out is a PrintStream, which is defined in a
+            package called java.io. A package is a collection of related classes; java.io
+            contains classes for I/O which stands for “input and output”.
+            34 Chapter 3 Input and Output
+            The numbers and letters after the @ sign are the address of System.out,
+            represented as a hexadecimal (base 16) number. The address of a value is
+            its location in the computer’s memory, which might be different on different
+            computers. In this example, the address is 685d72cd, but if you run the same
+            code, you will likely get something else.
+            As shown in Figure 3.1, System is defined in a file called System.java, and
+            PrintStream is defined in PrintStream.java. These files are part of the Java
+            library, which is an extensive collection of classes that you can use in your
+            programs. The source code for these classes is usually included with the com-
+            piler (see Section 10.6).
+            Figure 3.1: System.out.println refers to the out variable of the System
+            class, which is a PrintStream that provides a method called println.<br><br>
+            <h3>3.2 The Scanner Class</h3><br>
+            The System class also provides the special value System.in, which is an
+            InputStream that has methods for reading input from the keyboard. These
+            methods are not convenient to use, but fortunately Java provides other classes
+            that make it easy to handle common input tasks.
+            For example, Scanner is a class that provides methods for inputting words,
+            numbers, and other data. Scanner is provided by java.util, which is a
+            package that contains various “utility classes”. Before you can use Scanner,
+            you have to import it like this:
+            3.2 The Scanner Class 35
+            import java.util.Scanner;
+            This import statement tells the compiler that when you refer to Scanner,
+            you mean the one defined in java.util. Using an import statement is neces-
+            sary because there might be another class named Scanner in another package.
+            Next you have to initialize the Scanner. This line declares a Scanner variable
+            named in and creates a Scanner that reads input from System.in:
+            Scanner in = new Scanner(System.in);
+            The Scanner class provides a method called nextLine that reads a line of
+            input from the keyboard and returns a String. Here’s a complete example
+            that reads two lines and repeats them back to the user:
+            import java.util.Scanner;
+            public class Echo {
+            public static void main(String[] args) {
+            String line;
+            Scanner in = new Scanner(System.in);
+            System.out.print("Type something: ");
+            line = in.nextLine();
+            System.out.println("You said: " + line);
+            System.out.print("Type something else: ");
+            line = in.nextLine();
+            System.out.println("You also said: " + line);
+            }
+            }
+            Import statements can’t be inside a class definition. By convention, they are
+            usually at the beginning of the file. If you omit the import statement, you get
+            a compiler error like “cannot find symbol”. That means the compiler doesn’t
+            know where to find the definition for Scanner.
+            You might wonder why we can use the System class without importing it.
+            System belongs to the java.lang package, which is imported automatically.
+             
+        </p>
+    </div>
+    
+</body>
+</html>

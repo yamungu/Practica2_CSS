@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="Totarial.css">
+</head>
+<body>
+    <header>
+        <a href="JavaIntro.html" style="margin-right: 15px;">Computer Programming</a>
+        <a href="Variable.html">Variables and Operators</a>
+        <a href="Action.html"> Input and Output</a>
+        <a href="Methods.html">Methods and Testing</a>
+        
+    </header>
+    <div>
+        <p>
+            <h2> 4
+            Methods and Testing</h2>
+            So far, we’ve written programs that have only one method, named main. In
+            this chapter, we’ll show you how to organize programs into multiple methods.
+            We’ll also take a look at the Math class, which provides methods for common
+            mathematical operations. Finally, we’ll discuss strategies for incrementally
+            developing and testing your code.<br><br>
+            4.1 Defining New Methods
+            Some methods perform a computation and return a result. For example,
+            nextDouble reads input from the keyboard and returns it as a double. Other
+            methods, like println, carry out a sequence of actions without returning a
+            result. Java uses the keyword void to define such methods:
+            public static void newLine() {
+            System.out.println();
+            }
+            public static void main(String[] args) {
+            System.out.println("First line.");
+            newLine();
+            System.out.println("Second line.");<br><br>
+            
+            <h3>Chapter 4 Methods and Testing<h3></h3><br>
+            In this example, the newLine and main methods are both public, which means
+            they can be invoked (or “called”) from other classes. And they are both void,
+            which means that they don’t return a result (in contrast to nextDouble). The
+            output of the program is shown here:
+            First line.
+            Second line.
+            Notice the extra space between the lines. If we wanted more space between
+            them, we could invoke the same method repeatedly. Or we could write yet
+            another method (named threeLine) that displays three blank lines:
+            public class NewLine {
+            public static void newLine() {
+            System.out.println();
+            }
+            public static void threeLine() {
+            newLine();
+            newLine();
+            newLine();
+            }
+            public static void main(String[] args) {
+            System.out.println("First line.");
+            threeLine();
+            System.out.println("Second line.");
+            }
+            }
+            In this example, the name of the class is NewLine. By convention, class
+            names begin with a capital letter. NewLine contains three methods, newLine,
+            threeLine, and main. Remember that Java is case-sensitive, so NewLine and
+            newLine are not the same.
+            By convention, method names begin with a lowercase letter and use “camel
+            case”, which is a cute name for jammingWordsTogetherLikeThis. You can
+            use any name you want for methods, except main or any of the Java keywords.<br><br>
+            
+           <h4> 4.2 Flow of Execution</h4><br>
+            When you look at a class definition that contains several methods, it is tempt-
+            ing to read it from top to bottom. But that is not the flow of execution, or
+            the order the program actually runs. The NewLine program runs methods in
+            the opposite order than they are listed.
+            Programs always begin at the first statement of main, regardless of where it is
+            in the source file. Statements are executed one at a time, in order, until you
+            reach a method invocation, which you can think of as a detour. Instead of
+            going to the next statement, you jump to the first line of the invoked method,
+            execute all the statements there, and then come back and pick up exactly
+            where you left off.
+            That sounds simple enough, but remember that one method can invoke another
+            one. In the middle of main, the previous example goes off to execute the
+            statements in threeLine. While in threeLine, it goes off to execute newLine.
+            Then newLine invokes println, which causes yet another detour.
+            Fortunately, Java is good at keeping track of which methods are running.
+            So when println completes, it picks up where it left off in newLine; when
+            newLine completes, it goes back to threeLine; and when threeLine com-
+            pletes, it gets back to main.
+            Beginners often wonder why it’s worth the trouble to write other methods,
+            when they could just do everything in main. The NewLine example demon-
+            strates a few reasons:
+             Creating a new method allows you to name a block of statements, which
+            makes the code easier to read and understand.
+             Introducing new methods can make the program shorter by eliminating
+            repetitive code. For example, to display nine consecutive newlines, you
+            could invoke threeLine three times.
+             A common problem-solving technique is to break problems down into sub-
+            problems. Methods allow you to focus on each subproblem in isolation,
+            and then compose them into a complete solution.
+            Perhaps most importantly, organizing your code into multiple methods allows
+            you to test individual parts of your program separately. It’s easier to get a
+            complex program working if you know that each method works correctly.<br><br>
+            
+           <h4>4.3 Parameters and Arguments</h4><br>
+            Some of the methods we have used require arguments, which are the values
+            you provide in parentheses when you invoke the method.
+            For example, the println method takes a String argument. To display a
+            message, you have to provide the message: System.out.println("Hello").
+            Similarly, the printf method can take multiple arguments. The statement
+            System.out.printf("%d in = %f cm\n", inch, cm) has three arguments:
+            the format string, the inch value, and the cm value.
+            When you invoke a method, you provide the arguments. When you define a
+            method, you name the parameters, which are variables that indicate what
+            arguments are required. The following class shows an example:
+            public class PrintTwice {
+            public static void printTwice(String s) {
+            System.out.println(s);
+            System.out.println(s);
+            }
+            public static void main(String[] args) {
+            printTwice("Don't make me say this twice!");
+            }
+            }
+            The printTwice method has a parameter named s with type String. When
+            you invoke printTwice, you have to provide an argument with type String.
+            Before the method executes, the argument gets assigned to the parameter. In
+            the printTwice example, the argument "Don't make me say this twice!"
+            gets assigned to the parameter s.
+            This process is called parameter passing, because the value gets passed from
+            outside the method to the inside. An argument can be any kind of expression,
+            so if you have a String variable, you can use its value as an argument:
+            String message = "Never say never.";
+            printTwice(message);<br><br>
+            <h4>4.4 Multiple Parameters<h/4><br><br>
+            The value you provide as an argument must have the same (or compatible)
+            type as the parameter. For example, if you try this:
+            printTwice(17); // syntax error
+            You will get an error message like this:
+            File: Test.java [line: 10]
+            Error: method printTwice in class Test cannot be applied
+            to given types;
+            required: java.lang.String
+            found: int
+            reason: actual argument int cannot be converted to
+            java.lang.String by method invocation conversion
+            This error message says that it found an int argument, but the required
+            parameter should be a String. In the case of printTwice, Java won’t convert
+            the integer 17 to the string "17" automatically.
+            Sometimes Java can convert an argument from one type to another auto-
+            matically. For example, Math.sqrt requires a double, but if you invoke
+            Math.sqrt(25), the integer value 25 is automatically converted to the floating-
+            point value 25.0.
+            Parameters and other variables exist only inside their own methods. In the
+            printTwice example, there is no such thing as s in the main method. If you
+            try to use it there, you’ll get a compiler error.
+            Similarly, inside printTwice there is no such thing as message. That variable
+            belongs to main. Because variables exist only inside the methods where they
+            are defined, they are often called local variables.
+            
+        </p>
+    </div>
+    
+</body>
+</html>
